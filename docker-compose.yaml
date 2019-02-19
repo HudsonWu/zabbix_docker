@@ -75,6 +75,7 @@ services:
    - /etc/localtime:/etc/localtime:ro
    - /etc/timezone:/etc/timezone:ro
    - ./zbx_env/web/nginx:/etc/ssl/nginx:ro
+   - ./zbx_env/web/log:/var/log:rw
   deploy:
    resources:
     limits:
@@ -126,6 +127,7 @@ services:
    - ./zbx_env/agent/modules:/var/lib/zabbix/modules:ro
    - ./zbx_env/agent/enc:/var/lib/zabbix/enc:ro
    - ./zbx_env/agent/ssh_keys:/var/lib/zabbix/ssh_keys:ro
+   - ./zbx_env/agent/log:/var/log:rw
   links:
    - zabbix-server:zabbix-server
   deploy:
@@ -162,6 +164,7 @@ services:
    - "162:162/udp"
   volumes:
    - ./zbx_env/snmp/snmptraps:/var/lib/zabbix/snmptraps:rw
+   - ./zbx_env/snmp/log:/var/log:rw
   deploy:
    resources:
     limits:
@@ -189,6 +192,7 @@ services:
   command: [mysqld, --character-set-server=utf8, --collation-server=utf8_bin]
   volumes:
    - ./zbx_env/mysql/mysql:/var/lib/mysql:rw
+   - ./zbx_env/mysql/log:/var/log:rw
   env_file:
    - ./conf/.env_db_mysql
   user: root
