@@ -17,6 +17,7 @@ services:
    - ./zbx_env/server/ssh_keys:/var/lib/zabbix/ssh_keys:ro
    - ./zbx_env/server/mibs:/var/lib/zabbix/mibs:ro
    - ./zbx_env/server/snmptraps:/var/lib/zabbix/snmptraps:ro
+   - ./zbx_env/server/log:/var/log:rw
   links:
    - mysql-server:mysql-server
   ulimits:
