@@ -1,7 +1,25 @@
 version: '3.5'
 
-services:
+networks:
+  zbx_net_frontend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.238.0/24
+  zbx_net_backend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    internal: true
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.239.0/24
 
+services:
  zabbix-server:
   image: zabbix/zabbix-server-mysql:alpine-4.0-latest
   restart: always
@@ -205,21 +223,3 @@ services:
      - zabbix-database
      - mysql-database
 
-networks:
-  zbx_net_frontend:
-    driver: bridge
-    driver_opts:
-      com.docker.network.enable_ipv6: "false"
-    ipam:
-      driver: default
-      config:
-      - subnet: 172.16.238.0/24
-  zbx_net_backend:
-    driver: bridge
-    driver_opts:
-      com.docker.network.enable_ipv6: "false"
-    internal: true
-    ipam:
-      driver: default
-      config:
-      - subnet: 172.16.239.0/24
