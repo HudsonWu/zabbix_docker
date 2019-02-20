@@ -81,7 +81,7 @@ services:
    com.zabbix.dbtype: "mysql"
    com.zabbix.os: "alpine"
 
- zabbix-web-nginx-mysql:
+ zabbix-web:
   image: zabbix/zabbix-web-nginx-mysql:alpine-4.0-latest
   restart: always
   ports:
