@@ -119,6 +119,7 @@ services:
   networks:
    zbx_net_backend:
     aliases:
+     - zabbix-web
      - zabbix-web-nginx-mysql
      - zabbix-web-nginx-alpine-mysql
      - zabbix-web-nginx-mysql-alpine
